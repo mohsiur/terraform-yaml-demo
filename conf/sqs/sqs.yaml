@@ -1,0 +1,18 @@
+queues:
+  - name: example-queue-dlq
+    type: standard
+    access_policy: basic
+    env:
+      - production
+      - dev
+
+  - name: example-queue
+    type: standard
+    access_policy: basic
+    visibility_timeout_seconds: 10
+    dlq:
+      name: example-queue-dlq
+      max_recieve_count: 1
+    env:
+      - production
+      - dev
